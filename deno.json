@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  },
+  "importMap": "./examples/import_map.json",
+  "tasks": {
+    "examples": "cd examples && deno task start",
+    "test": "deno test"
+  }
+}
