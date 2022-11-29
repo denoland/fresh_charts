@@ -82,6 +82,29 @@ export default function Home() {
           class="mx-auto my-4 h-96"
           alt="an example chart provided as an image"
         />
+        <h1 class="text(xl gray-600) font-medium mt-4">
+          Polar Area Chart - Inline
+        </h1>
+        <Chart
+          type="polarArea"
+          options={{ devicePixelRatio: 1 }}
+          data={{
+            labels: ["Red", "Orange", "Yellow", "Green", "Blue"],
+            datasets: [
+              {
+                label: "Dataset 1",
+                data: numbers(pieCfg),
+                backgroundColor: [
+                  ChartColors.Red,
+                  ChartColors.Orange,
+                  ChartColors.Yellow,
+                  ChartColors.Green,
+                  ChartColors.Blue,
+                ],
+              },
+            ],
+          }}
+        />
       </div>
     </>
   );

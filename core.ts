@@ -60,7 +60,7 @@ export function chart(
     {},
 ): string {
   Object.assign(options, {
-    animation: undefined,
+    animation: false,
     events: [],
     responsive: false,
   });
