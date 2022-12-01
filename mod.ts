@@ -51,5 +51,9 @@
  */
 
 export { Chart } from "./Chart.tsx";
-export { type ChartConfiguration, type ChartOptions } from "./core.ts";
+export {
+  type ChartConfiguration,
+  type ChartOptions,
+  globalDefaults,
+} from "./core.ts";
 export { renderChart } from "./render.ts";

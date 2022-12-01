@@ -2,6 +2,9 @@
 
 import { ChartJs, Rect2D, SvgCanvas, SvgCanvas2DGradient } from "./deps.ts";
 
+/** Underlying ChartJS global defaults which can be modified. */
+export const globalDefaults = ChartJs.defaults.global;
+
 /** The set of chart options that are supported. Unsupported or fixed values
  * are omitted from the underlying {@linkcode ChartJs.ChartOptions}. */
 export type ChartOptions = Omit<
