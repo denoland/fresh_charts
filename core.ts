@@ -50,14 +50,17 @@ interface SvgCanvasCanvas {
   };
 }
 
+/** Global plugins for the underlying Chart.js library. */
+export const plugins = ChartJs.plugins;
+
 /** Render a chart, returning a SVG string representation of the chart.
  *
  * This is a lower level function, where the `Chart` component and `renderChart`
  * are intended for use within a Fresh application.
  */
 export function chart(
-  { width = 768, height = 384, type, data, options = {} }: ChartConfiguration =
-    {},
+  { width = 768, height = 384, type, data, options = {}, plugins }:
+    ChartConfiguration = {},
 ): string {
   Object.assign(options, {
     animation: false,
@@ -78,7 +81,7 @@ export function chart(
   globalThis.CanvasGradient = SvgCanvas2DGradient as typeof CanvasGradient;
 
   try {
-    new ChartJs.Chart(el, { type, data, options });
+    new ChartJs.Chart(el, { type, data, options, plugins });
   } finally {
     if (savedGradient) {
       globalThis.CanvasGradient = savedGradient;
