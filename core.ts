@@ -2,23 +2,33 @@
 
 import { ChartJs, Rect2D, SvgCanvas, SvgCanvas2DGradient } from "./deps.ts";
 
+/** Underlying ChartJS defaults which can be modified. */
+export const defaults: ChartJs.Defaults = ChartJs.defaults;
+/** Underlying ChartJS plugins. */
+export const plugins = ChartJs.plugins;
+
 /** The set of chart options that are supported. Unsupported or fixed values
  * are omitted from the underlying {@linkcode ChartJs.ChartOptions}. */
-export type ChartOptions = Omit<
-  ChartJs.ChartOptions,
-  | "responsive"
-  | "responsiveAnimationDuration"
-  | "events"
-  | "legendCallback"
-  | "onHover"
-  | "onClick"
-  | "onResize"
-  | "hover"
-  | "animation"
->;
+export type ChartOptions<TType extends ChartJs.ChartType = ChartJs.ChartType> =
+  Omit<
+    ChartJs.ChartOptions<TType>,
+    | "responsive"
+    | "responsiveAnimationDuration"
+    | "events"
+    | "legendCallback"
+    | "onHover"
+    | "onClick"
+    | "onResize"
+    | "hover"
+    | "animation"
+  >;
 
 /** The configuration options that are settable when rendering a chart. */
-export interface ChartConfiguration {
+export interface ChartConfiguration<
+  TType extends ChartJs.ChartType = ChartJs.ChartType,
+  TData = ChartJs.DefaultDataPoint<TType>,
+  TLabel = unknown,
+> {
   /** The width, in pixels, of the chart.
    *
    * Defaults to `768`.
@@ -35,19 +45,20 @@ export interface ChartConfiguration {
    */
   type?: ChartJs.ChartType;
   /** Data to be rendered in the chart. */
-  data?: ChartJs.ChartData;
+  data: ChartJs.ChartData<TType, TData, TLabel>;
   /** Options which can be configured on the chart. */
   options?: ChartOptions;
   /** Chart plugins to be registered for the chart. */
-  plugins?: ChartJs.PluginServiceRegistrationOptions[];
+  plugins?: ChartJs.Plugin[];
 }
 
-interface SvgCanvasCanvas {
+interface SvgCanvasExtras {
   canvas?: {
     width: number;
     height: number;
     style: Record<string, string>;
   };
+  resetTransform?(): void;
 }
 
 /** Render a chart, returning a SVG string representation of the chart.
@@ -55,9 +66,13 @@ interface SvgCanvasCanvas {
  * This is a lower level function, where the `Chart` component and `renderChart`
  * are intended for use within a Fresh application.
  */
-export function chart(
-  { width = 768, height = 384, type, data, options = {} }: ChartConfiguration =
-    {},
+export function chart<
+  TType extends ChartJs.ChartType = ChartJs.ChartType,
+  TData = ChartJs.DefaultDataPoint<TType>,
+  TLabel = unknown,
+>(
+  { width = 768, height = 384, type = "bar", data, options = {}, plugins }:
+    ChartConfiguration<TType, TData, TLabel> = { data: { datasets: [] } },
 ): string {
   Object.assign(options, {
     animation: false,
@@ -65,20 +80,25 @@ export function chart(
     responsive: false,
   });
 
-  const ctx: SvgCanvas & SvgCanvasCanvas = new SvgCanvas();
+  const ctx: SvgCanvas & SvgCanvasExtras = new SvgCanvas();
   ctx.canvas = {
     width,
     height,
     style: { width: `${width}px`, height: `${height}px` },
   };
   ctx.fontHeightRatio = 2;
+  ctx.globalAlpha = 1;
+  // for some reason, SvgCanvas does not provide `.resetTransform()` so using
+  // `setTransform()` to set to the identity matrix, which is effectively the
+  // same.
+  ctx.resetTransform = () => ctx.setTransform(1, 0, 0, 1, 0, 0);
   // deno-lint-ignore no-explicit-any
   const el: HTMLCanvasElement = { getContext: () => ctx } as any;
   const savedGradient = globalThis.CanvasGradient;
   globalThis.CanvasGradient = SvgCanvas2DGradient as typeof CanvasGradient;
 
   try {
-    new ChartJs.Chart(el, { type, data, options });
+    new ChartJs.Chart(el, { type, data, options, plugins });
   } finally {
     if (savedGradient) {
       globalThis.CanvasGradient = savedGradient;

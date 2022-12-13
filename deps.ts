@@ -6,8 +6,8 @@
 /// <reference lib="dom.asynciterable" />
 /// <reference lib="deno.ns" />
 
-export { default as colorLib } from "https://esm.sh/stable/@kurkle/color@0.2.1";
-export { default as ChartJs } from "https://esm.sh/stable/chart.js@2.9.3";
+export { default as colorLib } from "https://esm.sh/stable/@kurkle/color@0.3.1";
+export * as ChartJs from "https://esm.sh/stable/chart.js@4.0.1/auto";
 export {
   Rect2D,
   SvgCanvas,

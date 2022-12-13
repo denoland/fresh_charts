@@ -7,7 +7,7 @@ import { Chart } from "./Chart.tsx";
 Deno.test({
   name: "Chart - renders",
   fn() {
-    const actual = render(<Chart />);
+    const actual = render(<Chart data={{ datasets: [] }} />);
     assertStringIncludes(
       actual,
       `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="768px" height="384px" viewBox="0 0 768 384">`,
