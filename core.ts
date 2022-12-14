@@ -2,6 +2,19 @@
 
 import { ChartJs, Rect2D, SvgCanvas, SvgCanvas2DGradient } from "./deps.ts";
 
+class ChartSvgCanvas extends SvgCanvas {
+  public override clearRect(x: number, y: number, w: number, h: number): void {
+    this.save();
+    this.fillStyle = "transparent";
+    this.fillRect(x, y, w, h);
+    this.restore();
+  }
+
+  public resetTransform() {
+    this.setTransform(1, 0, 0, 1, 0, 0);
+  }
+}
+
 /** Underlying ChartJS defaults which can be modified. */
 export const defaults: ChartJs.Defaults = ChartJs.defaults;
 /** Underlying ChartJS plugins. */
@@ -58,7 +71,6 @@ interface SvgCanvasExtras {
     height: number;
     style: Record<string, string>;
   };
-  resetTransform?(): void;
 }
 
 /** Render a chart, returning a SVG string representation of the chart.
@@ -80,18 +92,13 @@ export function chart<
     responsive: false,
   });
 
-  const ctx: SvgCanvas & SvgCanvasExtras = new SvgCanvas();
+  const ctx: ChartSvgCanvas & SvgCanvasExtras = new ChartSvgCanvas();
   ctx.canvas = {
     width,
     height,
     style: { width: `${width}px`, height: `${height}px` },
   };
   ctx.fontHeightRatio = 2;
-  ctx.globalAlpha = 1;
-  // for some reason, SvgCanvas does not provide `.resetTransform()` so using
-  // `setTransform()` to set to the identity matrix, which is effectively the
-  // same.
-  ctx.resetTransform = () => ctx.setTransform(1, 0, 0, 1, 0, 0);
   // deno-lint-ignore no-explicit-any
   const el: HTMLCanvasElement = { getContext: () => ctx } as any;
   const savedGradient = globalThis.CanvasGradient;
