@@ -1,6 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
 import { chart, type ChartConfiguration } from "./core.ts";
+import { type ChartJs } from "./deps.ts";
 
 /** Render a chart, based on the configuration, returning the chart as an SVG
  * {@linkcode Response}.
@@ -45,7 +46,11 @@ import { chart, type ChartConfiguration } from "./core.ts";
  * };
  * ```
  */
-export function renderChart(configuration?: ChartConfiguration): Response {
+export function renderChart<
+  TType extends ChartJs.ChartType = ChartJs.ChartType,
+  TData = ChartJs.DefaultDataPoint<TType>,
+  TLabel = unknown,
+>(configuration?: ChartConfiguration<TType, TData, TLabel>): Response {
   return new Response(chart(configuration), {
     headers: { "content-type": "image/svg+xml" },
   });

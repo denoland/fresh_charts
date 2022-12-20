@@ -28,10 +28,7 @@ export default function Home() {
         <h1 class="text(xl gray-600) font-medium mt-4">Bar Chart - Inline</h1>
         <Chart
           type="bar"
-          options={{
-            devicePixelRatio: 1,
-            scales: { xAxes: [{ stacked: true }], yAxes: [{ stacked: true }] },
-          }}
+          options={{ devicePixelRatio: 1 }}
           data={{
             labels: months(barCfg),
             datasets: [

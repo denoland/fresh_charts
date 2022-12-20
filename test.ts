@@ -8,6 +8,6 @@ Deno.test({
   fn() {
     assertEquals(typeof mod.Chart, "function");
     assertEquals(typeof mod.renderChart, "function");
-    assertEquals(Object.entries(mod).length, 2);
+    assertEquals(Object.entries(mod).length, 4);
   },
 });

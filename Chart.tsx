@@ -1,6 +1,7 @@
 // Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
 
 import { chart, type ChartConfiguration } from "./core.ts";
+import { type ChartJs } from "./deps.ts";
 
 /** A JSX component which is can be used to server side render a chart inline
  * within a page.
@@ -46,6 +47,10 @@ import { chart, type ChartConfiguration } from "./core.ts";
  * }
  * ```
  */
-export function Chart(opts: ChartConfiguration) {
+export function Chart<
+  TType extends ChartJs.ChartType = ChartJs.ChartType,
+  TData = ChartJs.DefaultDataPoint<TType>,
+  TLabel = unknown,
+>(opts: ChartConfiguration<TType, TData, TLabel>) {
   return <span dangerouslySetInnerHTML={{ __html: chart(opts) }}></span>;
 }
