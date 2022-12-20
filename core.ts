@@ -71,6 +71,7 @@ interface SvgCanvasExtras {
     height: number;
     style: Record<string, string>;
   };
+  resetTransform?(): void;
 }
 
 /** Render a chart, returning a SVG string representation of the chart.
