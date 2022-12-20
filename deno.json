@@ -7,5 +7,6 @@
   "tasks": {
     "examples": "cd examples && deno task start",
     "test": "deno test"
-  }
+  },
+  "lock": false
 }
