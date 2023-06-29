@@ -52,5 +52,9 @@ export function Chart<
   TData = ChartJs.DefaultDataPoint<TType>,
   TLabel = unknown,
 >(opts: ChartConfiguration<TType, TData, TLabel>) {
+  if (opts.svgClass) {
+    // Calculates span with the given svg class to make twind aware of the given class
+    const _span = <span class={opts.svgClass}></span>;
+  }
   return <span dangerouslySetInnerHTML={{ __html: chart(opts) }}></span>;
 }

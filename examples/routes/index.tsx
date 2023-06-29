@@ -49,6 +49,7 @@ export default function Home() {
               },
             ],
           }}
+          svgClass="w-full"
         />
         <h1 class="text(xl gray-600) font-medium mt-4">Pie Chart - Inline</h1>
         <Chart
@@ -70,6 +71,7 @@ export default function Home() {
               },
             ],
           }}
+          svgStyle="width: 100%;"
         />
         <h1 class="text(xl gray-600) font-medium mt-4">
           Line Chart - Image Tag
@@ -101,6 +103,7 @@ export default function Home() {
               },
             ],
           }}
+          svgClass="w-full"
         />
       </div>
     </>
