@@ -14,3 +14,28 @@ Deno.test({
     );
   },
 });
+
+Deno.test({
+  name: "Chart - renders with svgClass, svgStyle",
+  fn() {
+    let actual = render(
+      <Chart
+        data={{ datasets: [] }}
+        svgClass="w-full"
+        svgStyle="width: 100%;"
+      />,
+    );
+    assertStringIncludes(
+      actual,
+      `<svg class="w-full" style="width: 100%;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="768px" height="384px" viewBox="0 0 768 384">`,
+    );
+
+    actual = render(
+      <Chart data={{ datasets: [] }} svgClass={`"`} svgStyle={`"`} />,
+    );
+    assertStringIncludes(
+      actual,
+      `<svg class="&quot;" style="&quot;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="768px" height="384px" viewBox="0 0 768 384">`,
+    );
+  },
+});

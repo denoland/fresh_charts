@@ -63,6 +63,10 @@ export interface ChartConfiguration<
   options?: ChartOptions;
   /** Chart plugins to be registered for the chart. */
   plugins?: ChartJs.Plugin[];
+  /** CSS class for the <svg> element of the chart. */
+  svgClass?: string;
+  /** CSS style for the <svg> element of the chart */
+  svgStyle?: string;
 }
 
 interface SvgCanvasExtras {
@@ -84,8 +88,16 @@ export function chart<
   TData = ChartJs.DefaultDataPoint<TType>,
   TLabel = unknown,
 >(
-  { width = 768, height = 384, type = "bar", data, options = {}, plugins }:
-    ChartConfiguration<TType, TData, TLabel> = { data: { datasets: [] } },
+  {
+    width = 768,
+    height = 384,
+    type = "bar",
+    data,
+    options = {},
+    plugins,
+    svgClass,
+    svgStyle,
+  }: ChartConfiguration<TType, TData, TLabel> = { data: { datasets: [] } },
 ): string {
   Object.assign(options, {
     animation: false,
@@ -113,5 +125,20 @@ export function chart<
     }
   }
 
-  return ctx.render(new Rect2D(0, 0, width, height), "px");
+  let svg = ctx.render(new Rect2D(0, 0, width, height), "px");
+
+  if (svgStyle) {
+    svg = svg.replace(
+      "<svg ",
+      `<svg style="${svgStyle.replaceAll('"', "&quot;")}" `,
+    );
+  }
+  if (svgClass) {
+    svg = svg.replace(
+      "<svg ",
+      `<svg class="${svgClass.replaceAll('"', "&quot;")}" `,
+    );
+  }
+
+  return svg;
 }
