@@ -3,9 +3,20 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   },
-  "importMap": "./examples/import_map.json",
-  "tasks": {
-    "examples": "cd examples && deno task start",
+  "imports": {
+    "$fresh/": "https://deno.land/x/fresh@1.2.0/",
+    "$fresh_charts/": "./",
+    "preact": "https://esm.sh/preact@10.15.1",
+    "preact/": "https://esm.sh/preact@10.15.1/",
+    "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.1.0",
+    "@preact/signals": "https://esm.sh/*@preact/signals@1.1.3",
+    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.2.3",
+    "std/": "https://deno.land/std@0.159.0/",
+    "twind": "https://esm.sh/twind@0.16.19",
+    "twind/": "https://esm.sh/twind@0.16.19/"
+  },
+    "tasks": {
+    "examples": "deno run -A --watch=examples/static/,examplesroutes/ examples/dev.ts",
     "test": "deno test"
   },
   "lock": false
