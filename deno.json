@@ -15,7 +15,7 @@
     "twind": "https://esm.sh/twind@0.16.19",
     "twind/": "https://esm.sh/twind@0.16.19/"
   },
-    "tasks": {
+  "tasks": {
     "examples": "deno run -A --watch=examples/static/,examplesroutes/ examples/dev.ts",
     "test": "deno test"
   },
