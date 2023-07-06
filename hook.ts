@@ -1,8 +1,10 @@
-import ChartJS, {
-  type ChartConfiguration,
-  type ChartType,
-  type DefaultDataPoint,
+import type {
+  Chart,
+  ChartConfiguration,
+  ChartType,
+  DefaultDataPoint,
 } from "chart.js";
+import ChartJS from "https://cdn.jsdelivr.net/npm/chart.js@4.3.0/auto/+esm";
 import { useEffect, useRef } from "preact/hooks";
 
 export type { ChartConfiguration, ChartType, DefaultDataPoint };
@@ -37,7 +39,7 @@ export function useChart<
   Label = unknown,
 >(options: ChartConfiguration<Type, Data, Label>) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const chartRef = useRef<ChartJS<Type, Data, Label> | null>(null);
+  const chartRef = useRef<Chart<Type, Data, Label> | null>(null);
 
   useEffect(() => {
     if (canvasRef.current === null) {
@@ -46,7 +48,10 @@ export function useChart<
     if (chartRef.current) {
       chartRef.current.destroy();
     }
-    chartRef.current = new ChartJS(canvasRef.current, options);
+    chartRef.current = new ChartJS(
+      canvasRef.current,
+      options,
+    ) as unknown as Chart<Type, Data, Label>;
 
     return () => {
       chartRef.current?.destroy();

@@ -184,9 +184,15 @@ export default function Home() {
 
 ```tsx
 import { useEffect } from "preact/hooks";
-import { useChart, type ChartConfiguration, type ChartType } from "$fresh_charts/hook.tsx";
+import {
+  type ChartConfiguration,
+  type ChartType,
+  useChart,
+} from "$fresh_charts/hook.tsx";
 
-export default function Chart<Type extends ChartType>(props: ChartConfiguration<Type>) {
+export default function Chart<Type extends ChartType>(
+  props: ChartConfiguration<Type>,
+) {
   const { canvasRef, chartRef } = useChart<Type>(props);
 
   useEffect(() => {
