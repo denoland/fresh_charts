@@ -3,8 +3,8 @@ import type {
   ChartConfiguration,
   ChartType,
   DefaultDataPoint,
-} from "chart.js";
-import ChartJS from "https://cdn.jsdelivr.net/npm/chart.js@4.3.0/auto/+esm";
+} from "chart.js/dist/types/index.d.ts";
+import { Chart as ChartJS, registerables } from "chart.js/+esm";
 import { useEffect, useRef } from "preact/hooks";
 
 export type { ChartConfiguration, ChartType, DefaultDataPoint };
@@ -48,6 +48,8 @@ export function useChart<
     if (chartRef.current) {
       chartRef.current.destroy();
     }
+    ChartJS.register(...registerables);
+
     chartRef.current = new ChartJS(
       canvasRef.current,
       options,

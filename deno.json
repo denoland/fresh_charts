@@ -14,7 +14,8 @@
     "std/": "https://deno.land/std@0.159.0/",
     "twind": "https://esm.sh/twind@0.16.19",
     "twind/": "https://esm.sh/twind@0.16.19/",
-    "chart.js": "https://esm.sh/stable/chart.js@4.3.0/auto"
+    "chart.js": "https://cdn.jsdelivr.net/npm/chart.js@4.3.0",
+    "chart.js/": "https://cdn.jsdelivr.net/npm/chart.js@4.3.0/"
   },
   "tasks": {
     "examples": "deno run -A --watch=examples/static/,examples/routes/,examples/islands examples/dev.ts",
