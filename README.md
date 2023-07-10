@@ -11,8 +11,7 @@ For server side rendering there is the JSX/TSX component `Chart` which can be
 used to inline a chart on a page, and the `renderChart()` function which can be
 used to respond in a handler with an SVG image.
 
-For client side rendering there is also a JSX/TSX component `Chart` as well as a
-custom hook `useChart`, which offers more flexibilty and control.
+For client side rendering there is also a JSX/TSX island component `Chart`.
 
 ### [SSR] Inline chart example
 
@@ -127,80 +126,13 @@ export const handler: Handlers = {
 
 ### [CSR] Inline chart example
 
-This provides a client side rendered and interactive chart within the router
+This provides a client side rendered and interactive chart island within the router
 page itself.
 
 **/islands/chart.tsx**
 
 ```tsx
-import { Chart } from "$fresh_charts/island.tsx";
-
-export default Chart;
-```
-
-**/routes/index.tsx**
-
-```tsx
-import { Head } from "$fresh/runtime.ts";
-import { ChartColors } from "$fresh_charts/utils.ts";
-import { Chart } from "../islands/chart.tsx";
-
-export default function Home() {
-  return (
-    <>
-      <Head>
-        <title>Example Chart</title>
-      </Head>
-      <div class="p-4 mx-auto max-w-screen-md">
-        <Chart
-          type="line"
-          options={{
-            scales: { yAxes: [{ ticks: { beginAtZero: true } }] },
-          }}
-          data={{
-            labels: ["1", "2", "3"],
-            datasets: [{
-              label: "Sessions",
-              data: [123, 234, 234],
-              borderColor: ChartColors.Red,
-              borderWidth: 1,
-            }, {
-              label: "Users",
-              data: [346, 233, 123],
-              borderColor: ChartColors.Blue,
-              borderWidth: 1,
-            }],
-          }}
-        />
-      </div>
-    </>
-  );
-}
-```
-
-### [CSR] Using the provided hook
-
-**/islands/chart.tsx**
-
-```tsx
-import { useEffect } from "preact/hooks";
-import {
-  type ChartConfiguration,
-  type ChartType,
-  useChart,
-} from "$fresh_charts/hook.tsx";
-
-export default function Chart<Type extends ChartType>(
-  props: ChartConfiguration<Type>,
-) {
-  const { canvasRef, chartRef } = useChart<Type>(props);
-
-  useEffect(() => {
-    chartRef.current?.render();
-  }, []);
-
-  return <canvas ref={canvasRef} />;
-}
+import { Chart as default } from "$fresh_charts/island.tsx";
 ```
 
 **/routes/index.tsx**

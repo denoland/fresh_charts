@@ -1,11 +1,10 @@
-import type { JSX } from "preact";
-import { useEffect } from "preact/hooks";
-import {
+import ChartJS, {
   type ChartConfiguration,
   type ChartType,
   type DefaultDataPoint,
-  useChart,
-} from "$fresh_charts/hook.ts";
+} from "chart.js";
+import type { JSX } from "preact";
+import { useEffect, useRef } from "preact/hooks";
 
 export type { ChartType, DefaultDataPoint };
 
@@ -16,6 +15,41 @@ export type ChartProps<
 > = ChartConfiguration<Type, Data, Label> & {
   canvas?: JSX.HTMLAttributes<HTMLCanvasElement>;
 };
+
+/**
+ * A hook which takes in a Chart.js configuration object and returns `canvasRef` and `chartRef`.
+ *
+ * `canvasRef` is a reference to the canvas element which the chart is rendered to.
+ * `chartRef` is a reference to the Chart.js instance.
+ */
+function useChart<
+  Type extends ChartType,
+  Data = DefaultDataPoint<Type>,
+  Label = unknown,
+>(options: ChartConfiguration<Type, Data, Label>) {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const chartRef = useRef<ChartJS<Type, Data, Label> | null>(null);
+
+  useEffect(() => {
+    if (canvasRef.current === null) {
+      throw new Error("canvas is null");
+    }
+    if (chartRef.current) {
+      chartRef.current.destroy();
+    }
+
+    chartRef.current = new ChartJS(
+      canvasRef.current,
+      options,
+    );
+
+    return () => {
+      chartRef.current?.destroy();
+    };
+  }, [canvasRef, options]);
+
+  return { canvasRef, chartRef };
+}
 
 /**
  * A JSX component which can be used to client side render a chart inline
