@@ -3,7 +3,8 @@ import type { JSX } from "preact";
 import { useEffect, useRef } from "preact/hooks";
 
 export type ChartType = ChartJs.ChartType;
-export type DefaultDataPoint<TType extends ChartType> = ChartJs.DefaultDataPoint<TType>;
+export type DefaultDataPoint<TType extends ChartType> =
+  ChartJs.DefaultDataPoint<TType>;
 
 export type ChartProps<
   Type extends ChartType,
