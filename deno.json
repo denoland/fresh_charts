@@ -13,7 +13,8 @@
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.2.3",
     "std/": "https://deno.land/std@0.159.0/",
     "twind": "https://esm.sh/twind@0.16.19",
-    "twind/": "https://esm.sh/twind@0.16.19/"
+    "twind/": "https://esm.sh/twind@0.16.19/",
+    "chart.js": "https://esm.sh/stable/chart.js@4.3.0/auto?target=es2022"
   },
   "tasks": {
     "examples": "deno run -A --watch=examples/static/,examples/routes/,examples/islands examples/dev.ts",

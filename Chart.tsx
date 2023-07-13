@@ -3,7 +3,8 @@
 import { chart, type ChartConfiguration } from "./core.ts";
 import { type ChartJs } from "./deps.ts";
 
-/** A JSX component which is can be used to server side render a chart inline
+/**
+ * A JSX component which can be used to server side render a chart inline
  * within a page.
  *
  * View {@linkcode ChartConfiguration} for a list of properties that can be set
@@ -54,7 +55,7 @@ export function Chart<
 >(opts: ChartConfiguration<TType, TData, TLabel>) {
   if (opts.svgClass) {
     // Calculates span with the given svg class to make twind aware of the given class
-    const _span = <span class={opts.svgClass}></span>;
+    const _span = <span class={opts.svgClass} />;
   }
-  return <span dangerouslySetInnerHTML={{ __html: chart(opts) }}></span>;
+  return <span dangerouslySetInnerHTML={{ __html: chart(opts) }} />;
 }
