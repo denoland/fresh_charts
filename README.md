@@ -1,7 +1,7 @@
 # fresh_charts
 
-A full stack charting library for Fresh based on
-[Chart.js](https://www.chartjs.org/).
+A charting library for Fresh based on [Chart.js](https://www.chartjs.org/),
+which supports server and client side rendering.
 
 ## Usage
 
@@ -126,8 +126,8 @@ export const handler: Handlers = {
 
 ### [CSR] Inline chart example
 
-This provides a client side rendered and interactive chart island within the router
-page itself.
+This provides a client side rendered and interactive chart island within the
+router page itself.
 
 **/islands/chart.tsx**
 
