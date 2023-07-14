@@ -7,7 +7,7 @@
 /// <reference lib="deno.ns" />
 
 export { default as colorLib } from "https://esm.sh/stable/@kurkle/color@0.3.1";
-export * as ChartJs from "https://esm.sh/stable/chart.js@4.0.1/auto";
+export * as ChartJs from "https://esm.sh/stable/chart.js@4.3.0/auto?target=es2022";
 export {
   Rect2D,
   SvgCanvas,

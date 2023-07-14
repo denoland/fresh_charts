@@ -17,8 +17,6 @@ class ChartSvgCanvas extends SvgCanvas {
 
 /** Underlying ChartJS defaults which can be modified. */
 export const defaults: ChartJs.Defaults = ChartJs.defaults;
-/** Underlying ChartJS plugins. */
-export const plugins = ChartJs.plugins;
 
 /** The set of chart options that are supported. Unsupported or fixed values
  * are omitted from the underlying {@linkcode ChartJs.ChartOptions}. */

@@ -55,6 +55,5 @@ export {
   type ChartConfiguration,
   type ChartOptions,
   defaults,
-  plugins,
 } from "./core.ts";
 export { renderChart } from "./render.ts";
