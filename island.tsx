@@ -1,4 +1,4 @@
-import { ChartJs } from "./island.deps.ts";
+import { ChartJs } from "./deps.ts";
 import type { JSX } from "preact";
 import { useEffect, useRef } from "preact/hooks";
 
