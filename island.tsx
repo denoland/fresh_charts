@@ -1,3 +1,5 @@
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+
 import { ChartJs } from "./deps.ts";
 import type { JSX } from "preact";
 import { useEffect, useRef } from "preact/hooks";

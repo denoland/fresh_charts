@@ -1,6 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 
-import { colorLib } from "./deps.ts";
+import { colorLib } from "./deps_server.ts";
 
 /** A set of CSS RGB colors which can be used with charts. */
 export enum ChartColors {
