@@ -1,6 +1,7 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 
-import { ChartJs, Rect2D, SvgCanvas, SvgCanvas2DGradient } from "./deps.ts";
+import { ChartJs } from "./deps.ts";
+import { Rect2D, SvgCanvas, SvgCanvas2DGradient } from "./deps_server.ts";
 
 class ChartSvgCanvas extends SvgCanvas {
   public override clearRect(x: number, y: number, w: number, h: number): void {
