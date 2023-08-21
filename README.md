@@ -33,23 +33,26 @@ export default function Home() {
           type="line"
           options={{
             devicePixelRatio: 1,
-            scales: { yAxes: [{ ticks: { beginAtZero: true } }] },
+            scales: { y: { beginAtZero: true } },
           }}
           data={{
             labels: ["1", "2", "3"],
-            datasets: [{
-              label: "Sessions",
-              data: [123, 234, 234],
-              borderColor: ChartColors.Red,
-              backgroundColor: transparentize(ChartColors.Red, 0.5),
-              borderWidth: 1,
-            }, {
-              label: "Users",
-              data: [346, 233, 123],
-              borderColor: ChartColors.Blue,
-              backgroundColor: transparentize(ChartColors.Blue, 0.5),
-              borderWidth: 1,
-            }],
+            datasets: [
+              {
+                label: "Sessions",
+                data: [123, 234, 234],
+                borderColor: ChartColors.Red,
+                backgroundColor: transparentize(ChartColors.Red, 0.5),
+                borderWidth: 1,
+              },
+              {
+                label: "Users",
+                data: [346, 233, 123],
+                borderColor: ChartColors.Blue,
+                backgroundColor: transparentize(ChartColors.Blue, 0.5),
+                borderWidth: 1,
+              },
+            ],
           }}
         />
       </div>
@@ -101,23 +104,26 @@ export const handler: Handlers = {
       type: "line",
       data: {
         labels: ["1", "2", "3"],
-        datasets: [{
-          label: "Sessions",
-          data: [123, 234, 234],
-          borderColor: ChartColors.Red,
-          backgroundColor: transparentize(ChartColors.Red, 0.5),
-          borderWidth: 1,
-        }, {
-          label: "Users",
-          data: [346, 233, 123],
-          borderColor: ChartColors.Blue,
-          backgroundColor: transparentize(ChartColors.Blue, 0.5),
-          borderWidth: 1,
-        }],
+        datasets: [
+          {
+            label: "Sessions",
+            data: [123, 234, 234],
+            borderColor: ChartColors.Red,
+            backgroundColor: transparentize(ChartColors.Red, 0.5),
+            borderWidth: 1,
+          },
+          {
+            label: "Users",
+            data: [346, 233, 123],
+            borderColor: ChartColors.Blue,
+            backgroundColor: transparentize(ChartColors.Blue, 0.5),
+            borderWidth: 1,
+          },
+        ],
       },
       options: {
         devicePixelRatio: 1,
-        scales: { yAxes: [{ ticks: { beginAtZero: true } }] },
+        scales: { y: { beginAtZero: true } },
       },
     });
   },
@@ -152,21 +158,24 @@ export default function Home() {
         <Chart
           type="line"
           options={{
-            scales: { yAxes: [{ ticks: { beginAtZero: true } }] },
+            scales: { y: { beginAtZero: true } },
           }}
           data={{
             labels: ["1", "2", "3"],
-            datasets: [{
-              label: "Sessions",
-              data: [123, 234, 234],
-              borderColor: ChartColors.Red,
-              borderWidth: 1,
-            }, {
-              label: "Users",
-              data: [346, 233, 123],
-              borderColor: ChartColors.Blue,
-              borderWidth: 1,
-            }],
+            datasets: [
+              {
+                label: "Sessions",
+                data: [123, 234, 234],
+                borderColor: ChartColors.Red,
+                borderWidth: 1,
+              },
+              {
+                label: "Users",
+                data: [346, 233, 123],
+                borderColor: ChartColors.Blue,
+                borderWidth: 1,
+              },
+            ],
           }}
         />
       </div>
