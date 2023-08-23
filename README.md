@@ -146,7 +146,7 @@ import { Chart as default } from "$fresh_charts/island.tsx";
 ```tsx
 import { Head } from "$fresh/runtime.ts";
 import { ChartColors } from "$fresh_charts/utils.ts";
-import { Chart } from "../islands/chart.tsx";
+import Chart from "../islands/chart.tsx";
 
 export default function Home() {
   return (
