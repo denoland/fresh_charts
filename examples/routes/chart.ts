@@ -1,4 +1,4 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 
 import { type Handlers } from "$fresh/server.ts";
 import { renderChart } from "$fresh_charts/mod.ts";
