@@ -4,7 +4,7 @@ import {
   assert,
   assertEquals,
   assertStringIncludes,
-} from "std/testing/asserts.ts";
+} from "std/assert/mod.ts";
 import { renderChart } from "./render.ts";
 
 Deno.test({
