@@ -6,7 +6,7 @@
 /// <reference lib="dom.asynciterable" />
 /// <reference lib="deno.ns" />
 
-export { default as colorLib } from "https://esm.sh/stable/@kurkle/color@0.3.1";
+export { default as colorLib } from "https://esm.sh/stable/@kurkle/color@0.3.2";
 export {
   Rect2D,
   SvgCanvas,
