@@ -186,4 +186,4 @@ export default function Home() {
 
 ---
 
-Copyright 2018-2022 the Deno authors. All rights reserved. MIT Licensed.
+Copyright 2018-2023 the Deno authors. All rights reserved. MIT Licensed.

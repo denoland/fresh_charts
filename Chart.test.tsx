@@ -1,6 +1,6 @@
-// Copyright 2018-2022 the Deno authors. All rights reserved. MIT license.
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
 
-import { assertStringIncludes } from "std/testing/asserts.ts";
+import { assertStringIncludes } from "std/assert/mod.ts";
 import { render } from "preact-render-to-string";
 import { Chart } from "./Chart.tsx";
 
