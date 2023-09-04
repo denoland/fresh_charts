@@ -60,7 +60,9 @@ export default function Home() {
   );
 }
 ```
+
 ### [SSR] Inline chart example preview
+
 ![](./images/preview1.svg)
 
 ### [SSR] Responding as an image
@@ -92,7 +94,9 @@ export default function Home() {
   );
 }
 ```
+
 ### [SSR] Responding as an image preview
+
 ![](./images/preview2.svg)
 
 **/routes/chart.ts**
@@ -133,6 +137,7 @@ export const handler: Handlers = {
   },
 };
 ```
+
 **/routes/chart.ts preview**
 
 ![](./images/preview3.svg)
@@ -190,6 +195,7 @@ export default function Home() {
   );
 }
 ```
+
 **/routes/index.tsx preview**
 
 ![](./images/preview4.png)
