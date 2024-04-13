@@ -138,7 +138,8 @@ router page itself.
 **/islands/chart.tsx**
 
 ```tsx
-import { Chart as default } from "$fresh_charts/island.tsx";
+import { Chart } from "$fresh_charts/island.tsx";
+export default Chart
 ```
 
 **/routes/index.tsx**
