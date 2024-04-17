@@ -139,7 +139,7 @@ router page itself.
 
 ```tsx
 import { Chart } from "$fresh_charts/island.tsx";
-export default Chart
+export default Chart;
 ```
 
 **/routes/index.tsx**
